@@ -1,0 +1,101 @@
+2023-10-19 21:06:27 [172.23.0.1][-][b899c5f705c5248923bba36645bc4b4b][error][yii\base\ViewNotFoundException] yii\base\ViewNotFoundException: The view file does not exist: /app/frontend/web/views/site/index.php in /app/vendor/yiisoft/yii2/base/View.php:233
+Stack trace:
+#0 /app/vendor/yiisoft/yii2/base/View.php(156): yii\base\View->renderFile('/app/frontend/w...', Array, Object(frontend\controllers\SiteController))
+#1 /app/vendor/yiisoft/yii2/base/Controller.php(407): yii\base\View->render('index', Array, Object(frontend\controllers\SiteController))
+#2 /app/frontend/controllers/SiteController.php(78): yii\base\Controller->render('index')
+#3 [internal function]: frontend\controllers\SiteController->actionIndex()
+#4 /app/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#5 /app/vendor/yiisoft/yii2/base/Controller.php(178): yii\base\InlineAction->runWithParams(Array)
+#6 /app/vendor/yiisoft/yii2/base/Module.php(552): yii\base\Controller->runAction('', Array)
+#7 /app/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('', Array)
+#8 /app/vendor/yiisoft/yii2/base/Application.php(384): yii\web\Application->handleRequest(Object(yii\web\Request))
+#9 /app/frontend/web/index.php(18): yii\base\Application->run()
+#10 {main}
+2023-10-19 21:06:27 [172.23.0.1][-][b899c5f705c5248923bba36645bc4b4b][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.23.0.1
+2023-10-19 21:06:27 [172.23.0.1][-][b899c5f705c5248923bba36645bc4b4b][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 172.23.0.1
+2023-10-19 21:06:27 [172.23.0.1][-][b899c5f705c5248923bba36645bc4b4b][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = [
+    '_identity' => '5c16c95d70cf0ab3f85bcf461f7d9c1dced749facd1021d0e0b39be4d17dba5ea:2:{i:0;s:9:\"_identity\";i:1;s:46:\"[1,\"1lSV1NbrGUIwc0RsH78uz7JNzil-IRhY\",2592000]\";}'
+    '_identity-backend' => '66e8b88733b9c0f608ffefb7f063a5d91cb689fd3515f61f243ca569be3c6fc0a:2:{i:0;s:17:\"_identity-backend\";i:1;s:46:\"[1,\"HP187Mvq7Mmm3CTU80dLkGmni_FUH_lR\",2592000]\";}'
+    'persons_1' => 'ae90211f70dae1a561f0f5967bd5d29680813e3dc11f4df912511ddca1ac6193a:2:{i:0;s:9:\"persons_1\";i:1;a:0:{}}'
+    'BITRIX_SM_GUEST_ID' => '1'
+    'BITRIX_SM_LAST_VISIT' => '19.10.2023 19:38:12'
+    'BITRIX_CONVERSION_CONTEXT_s1' => '{\"ID\":1,\"EXPIRE\":1697749140,\"UNIQUE\":[\"conversion_visit_day\"]}'
+    'PHPSESSID' => 'K7mFrqPBEqKy44CmsDkdoPtEFyGANXkm'
+    '_csrf' => '5d2e2a045ef03baf4e572fa14be3266b91588f3496a16005486e7eee03996013a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"qXJfE0epUlsKsdTpOMoE2c8NrYO6hSTw\";}'
+    '_csrf-frontend' => '4ce3a46f4a66a1d4343f732b6571db2030367a4c007aec03589602343231909aa:2:{i:0;s:14:\"_csrf-frontend\";i:1;s:32:\"J-7I-wa8_CATkXkTD4CSUFy10facLxCp\";}'
+    'advanced-backend' => '49e911f4e1d952e3cb62343725b64886'
+    '_csrf-backend' => '5f2a720a28df84f3d5efb3a5405abbbea5da092938674d84b11ba2aa30309303a:2:{i:0;s:13:\"_csrf-backend\";i:1;s:32:\"7hiaXO0A1u531G3PmGDTwb6jk5-ciLbq\";}'
+    'BITRIX_SM_SOUND_LOGIN_PLAYED' => 'Y'
+    'advanced-frontend' => 'b899c5f705c5248923bba36645bc4b4b'
+]
+
+$_SESSION = [
+    '__flash' => []
+]
+
+$_SERVER = [
+    'HOSTNAME' => '856f4522d9ac'
+    'PHP_INI_DIR' => '/usr/local/etc/php'
+    'SHLVL' => '1'
+    'HOME' => '/home/www-data'
+    'MYSQL_ROOT_PASSWORD' => 'password'
+    'PHP_LDFLAGS' => '-Wl,-O1 -pie'
+    'PHP_CFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_VERSION' => '8.0.30'
+    'GPG_KEYS' => '1729F83938DA44E27BA0F4D3DBDB397470D12172 BFDDD28642824F8118EF77909B67A5C12229118F 2C16C765DBE54A088130F1BC4B9B5F600B55F3B4 39B641343D8C104B2B146DC3F9C39DC0B9698544'
+    'PHP_CPPFLAGS' => '-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64'
+    'PHP_ASC_URL' => 'https://www.php.net/distributions/php-8.0.30.tar.xz.asc'
+    'PHP_URL' => 'https://www.php.net/distributions/php-8.0.30.tar.xz'
+    'MYSQL_PASSWORD' => 'password'
+    'PATH' => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+    'MYSQL_HOST' => 'db'
+    'MYSQL_USER' => 'api'
+    'MYSQL_PORT' => '3306'
+    'PHPIZE_DEPS' => 'autoconf 		dpkg-dev dpkg 		file 		g++ 		gcc 		libc-dev 		make 		pkgconf 		re2c'
+    'PWD' => '/app'
+    'PHP_SHA256' => '216ab305737a5d392107112d618a755dc5df42058226f1670e9db90e77d777d9'
+    'MYSQL_DATABASE' => 'api'
+    'USER' => 'www-data'
+    'HTTP_SEC_FETCH_SITE' => 'cross-site'
+    'HTTP_SEC_FETCH_MODE' => 'navigate'
+    'HTTP_SEC_FETCH_DEST' => 'document'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_COOKIE' => '_identity=5c16c95d70cf0ab3f85bcf461f7d9c1dced749facd1021d0e0b39be4d17dba5ea%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22_identity%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%221lSV1NbrGUIwc0RsH78uz7JNzil-IRhY%22%2C2592000%5D%22%3B%7D; _identity-backend=66e8b88733b9c0f608ffefb7f063a5d91cb689fd3515f61f243ca569be3c6fc0a%3A2%3A%7Bi%3A0%3Bs%3A17%3A%22_identity-backend%22%3Bi%3A1%3Bs%3A46%3A%22%5B1%2C%22HP187Mvq7Mmm3CTU80dLkGmni_FUH_lR%22%2C2592000%5D%22%3B%7D; persons_1=ae90211f70dae1a561f0f5967bd5d29680813e3dc11f4df912511ddca1ac6193a%3A2%3A%7Bi%3A0%3Bs%3A9%3A%22persons_1%22%3Bi%3A1%3Ba%3A0%3A%7B%7D%7D; BITRIX_SM_GUEST_ID=1; BITRIX_SM_LAST_VISIT=19.10.2023%2019%3A38%3A12; BITRIX_CONVERSION_CONTEXT_s1=%7B%22ID%22%3A1%2C%22EXPIRE%22%3A1697749140%2C%22UNIQUE%22%3A%5B%22conversion_visit_day%22%5D%7D; PHPSESSID=K7mFrqPBEqKy44CmsDkdoPtEFyGANXkm; _csrf=5d2e2a045ef03baf4e572fa14be3266b91588f3496a16005486e7eee03996013a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22qXJfE0epUlsKsdTpOMoE2c8NrYO6hSTw%22%3B%7D; _csrf-frontend=4ce3a46f4a66a1d4343f732b6571db2030367a4c007aec03589602343231909aa%3A2%3A%7Bi%3A0%3Bs%3A14%3A%22_csrf-frontend%22%3Bi%3A1%3Bs%3A32%3A%22J-7I-wa8_CATkXkTD4CSUFy10facLxCp%22%3B%7D; advanced-backend=49e911f4e1d952e3cb62343725b64886; _csrf-backend=5f2a720a28df84f3d5efb3a5405abbbea5da092938674d84b11ba2aa30309303a%3A2%3A%7Bi%3A0%3Bs%3A13%3A%22_csrf-backend%22%3Bi%3A1%3Bs%3A32%3A%227hiaXO0A1u531G3PmGDTwb6jk5-ciLbq%22%3B%7D; BITRIX_SM_SOUND_LOGIN_PLAYED=Y; advanced-frontend=b899c5f705c5248923bba36645bc4b4b'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate, br'
+    'HTTP_ACCEPT_LANGUAGE' => 'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/113.0'
+    'HTTP_HOST' => 'localhost:88'
+    'SCRIPT_FILENAME' => '/app/frontend/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => ''
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '172.23.0.4'
+    'REMOTE_PORT' => '36148'
+    'REMOTE_ADDR' => '172.23.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.21.6'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app'
+    'DOCUMENT_URI' => '/frontend/web/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/frontend/web/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/frontend/web/index.php'
+    'REQUEST_TIME_FLOAT' => 1697738787.7184
+    'REQUEST_TIME' => 1697738787
+    'argv' => []
+    'argc' => 0
+]
