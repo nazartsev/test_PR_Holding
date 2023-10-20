@@ -11,6 +11,23 @@ use yii\grid\GridView;
 
 $this->title = 'Apples';
 $this->params['breadcrumbs'][] = $this->title;
+$this->registerJs('
+  $(function () {
+    $(document).on(
+        "click",
+        "a.to-eat",
+        function(event) {
+            let $link = $(this);
+            if (!$link.data("href")) {
+                $link.data("href", $link.attr("href"))
+            }
+            let eatSize = $("input#size-"+$link.data("appleid")).val();
+            $link.attr("href", $link.data("href"));
+            $link.attr("href", $link.data("href") + "&size=" + eatSize);
+        }
+    )
+  });
+');
 ?>
 <div class="apple-index">
 
@@ -25,11 +42,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'color',
-            'created_at',
-            'dropped_at',
+            [
+                'attribute' => 'color',
+                'label' => 'Цвет',
+            ],
+            [
+                'attribute' => 'created_at',
+                'label' => 'Дата созревания',
+                'value' => function (Apple $apple) {
+                    return $apple->created_at ? date('d.m.Y H:i:s', $apple->created_at) : '';
+                },
+                'filter' => false
+            ],
+            [
+                'attribute' => 'dropped_at',
+                'label' => 'Дата падения',
+                'value' => function (Apple $apple) {
+                    return $apple->dropped_at ? date('d.m.Y H:i:s', $apple->dropped_at) : '';
+                },
+                'filter' => false
+            ],
             [
                 'attribute' => 'status',
+                'label' => 'Состояние',
                 'value' => function (Apple $apple): string {
                     return match (true) {
                         $apple->isOnTree() => 'На дереве',
@@ -41,6 +76,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
+                'label' => 'Размер',
+                'value' => function (Apple $apple): string {
+                    return $apple->size;
+                }
+            ],
+            [
+                'label' => 'Уронить яблоко',
                 'format' => 'raw',
                 'value' => function (Apple $apple) {
                     return Html::a(
@@ -50,10 +92,24 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Apple $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+                'label' => 'Откусить яблоко',
+                'format' => 'raw',
+                'value' => function (Apple $apple) {
+
+                    return
+
+                        Html::textInput('size', '', ['id' => 'size-'.$apple->id]).
+                        Html::a(
+                            'Откусить яблоко',
+                            ['to-eat', 'id' => $apple->id],
+                            [
+                                'class' => 'to-eat',
+                                'data-appleId' => $apple->id
+                            ]
+                        )
+                        ;
+
+                }
             ],
         ],
     ]); ?>

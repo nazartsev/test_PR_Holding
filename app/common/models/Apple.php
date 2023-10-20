@@ -20,10 +20,10 @@ use yii\db\Expression;
  */
 class Apple extends \yii\db\ActiveRecord
 {
-    private const STATUS_ON_TREE = 1;
-    private const STATUS_DROPPED = 2;
-    private const STATUS_SPOILED = 3;
-    private const TIME_TO_SPOILED = 5 * 60 * 60;
+    public const STATUS_ON_TREE = 1;
+    public  const STATUS_DROPPED = 2;
+    public  const STATUS_SPOILED = 3;
+    public  const TIME_TO_SPOILED = 5 * 60 * 60;
     private const TIME_TO_CREATED = 2 * 24 * 60 * 60;
 
     public static function generateColor(): string
@@ -145,11 +145,20 @@ class Apple extends \yii\db\ActiveRecord
 
     public function eat(int $percent): void
     {
+        if ($percent === 0) {
+            throw new ActionException('Нельзя укусить воздух');
+        }
+        if ($percent < 0) {
+            throw new ActionException('Нельзя вернуть откусанное яблоко');
+        }
         if ($this->isOnTree()) {
             throw new ActionException('Яблоко еще висит');
         }
         if ($this->isSpoiled()) {
             throw new ActionException('Яблоко уже испортилось');
+        }
+        if ($this->is_hidden === 1) {
+            throw new ActionException('Яблоко уже съели');
         }
         if ($percent > 100) {
             throw new ActionException('Пальцы не съедобные');
@@ -160,6 +169,9 @@ class Apple extends \yii\db\ActiveRecord
         }
 
         $this->eat_percent = $eatPercent;
+        if ($this->eat_percent === 100) {
+            $this->is_hidden = 1;
+        }
     }
 
     public function getSize(): float
@@ -167,7 +179,7 @@ class Apple extends \yii\db\ActiveRecord
         return (100 - $this->eat_percent) / 100;
     }
 
-    private function isTimeToSpoiled(): bool
+    public function isTimeToSpoiled(): bool
     {
         $timeSpoiled = $this->dropped_at + self::TIME_TO_SPOILED;
         return time() >= $timeSpoiled;

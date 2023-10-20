@@ -30,7 +30,8 @@ class AppleController extends Controller
                             'actions' => [
                                 'index',
                                 'create',
-                                'to-ground'
+                                'to-ground',
+                                'to-eat',
                             ],
                             'allow' => true,
                             'roles' => ['@'],
@@ -55,7 +56,7 @@ class AppleController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Apple::find(),
+            'query' => Apple::find()->where(['is_hidden' => 0]),
             'pagination' => false
         ]);
 
@@ -91,6 +92,31 @@ class AppleController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionToEat(int $id, $size = 0)
+    {
+        try {
+            if (is_null($size)) {
+                $size = 0;
+            }
+            if ((string)((int)$size) !== $size) {
+                throw new ActionException('Ошибка с размером');
+            }
+            $apple = $this->findModel($id);
+            if ($apple->isTimeToSpoiled()) {
+                $apple->fallToSpoiled();
+                $apple->save();
+                $apple->refresh();
+            }
+            $apple->eat($size);
+            $apple->save();
+            \Yii::$app->session->setFlash('success', 'Яблоко откусили');
+        } catch (ActionException $exception) {
+            \Yii::$app->session->setFlash('error', $exception->getMessage());
+        }
+
+        return $this->redirect(['index']);
+    }
+
     /**
      * Finds the Apple model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -104,6 +130,6 @@ class AppleController extends Controller
             return $model;
         }
 
-        throw new NotFoundHttpException('The requested page does not exist.');
+        throw new NotFoundHttpException('Яблоко не найдено');
     }
 }
